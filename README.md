@@ -10,5 +10,5 @@ Step 3# Have to download the node_modules by simply running "npm install" in you
 
 Step 4# Run with "npx expo start -c"
 
-Note: 
-Might need package-lock which is "npm ci" command 
+Step 5# When the QR code loads Click W which leads you to your local browser 
+
