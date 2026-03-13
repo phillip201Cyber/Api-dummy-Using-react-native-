@@ -1,0 +1,9 @@
+{
+  "expo": {
+    "name": "ApiDummy",
+    "slug": "apidummy",
+    "version": "1.0.0",
+    "scheme": "apidummy",
+    "plugins": ["expo-router"]
+  }
+}
