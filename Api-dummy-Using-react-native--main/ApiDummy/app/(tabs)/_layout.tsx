@@ -43,7 +43,7 @@ export default function TabLayout() {
 
        // Bottom tab styling
        tabBarButton: HapticTab,
-       tabBarActiveTintColor: "#01AFEE", // makapo blue
+       tabBarActiveTintColor: "#F45B24", // makapo blue
        tabBarInactiveTintColor: "#000000ff", // black default
        tabBarStyle: {
          backgroundColor: "white",
