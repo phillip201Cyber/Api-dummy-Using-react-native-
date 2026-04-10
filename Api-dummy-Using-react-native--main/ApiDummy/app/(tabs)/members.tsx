@@ -1,4 +1,5 @@
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 import React, { useMemo, useState } from "react";
 import {
   FlatList,
@@ -15,14 +16,17 @@ const initialMembers = [
   { id: "3", firstName: "firstName", lastName: "lastName", assigned: "EchoPaddle #3" },
   { id: "4", firstName: "firstName", lastName: "lastName", assigned: "EchoPaddle #4" },
   { id: "5", firstName: "firstName", lastName: "lastName", assigned: "EchoPaddle #5" },
+  { id: "6", firstName: "firstName", lastName: "lastName", assigned: "EchoPaddle #5" },
+
 ];
 
 export default function Members() {
-  const [searchText, setSearchText] = useState(""); // current val, func for change, starts with empty string
+  const router = useRouter();
+  const [searchText, setSearchText] = useState("");
   const [sortAscending, setSortAscending] = useState(true);
 
-  const filteredMembers = useMemo(() => { // search
-    const filtered = initialMembers.filter((member) => { // iterates through array of members
+  const filteredMembers = useMemo(() => {
+    const filtered = initialMembers.filter((member) => {
       const fullName = `${member.firstName} ${member.lastName}`.toLowerCase();
       const assigned = member.assigned.toLowerCase();
       const query = searchText.toLowerCase();
@@ -30,33 +34,45 @@ export default function Members() {
       return fullName.includes(query) || assigned.includes(query);
     });
 
-    return filtered.sort((a, b) => { // arranges array a-z z-a
+    return filtered.sort((a, b) => {
       const nameA = `${a.firstName} ${a.lastName}`.toLowerCase();
       const nameB = `${b.firstName} ${b.lastName}`.toLowerCase();
 
       if (sortAscending) {
         return nameA.localeCompare(nameB);
-      } 
-      else {
+      } else {
         return nameB.localeCompare(nameA);
       }
     });
   }, [searchText, sortAscending]);
 
   const renderMemberCard = ({ item }) => (
-    <View style={styles.cardWrapper}>
-      <View style={styles.card}>
-        <Text style={styles.memberName}>
-          {item.firstName} {item.lastName}
-        </Text>
+    <TouchableOpacity
+      activeOpacity={0.8}
+      onPress={() =>
+        router.push({
+          pathname: `/member/${item.id}`,
+          params: {
+            firstName: item.firstName,
+            lastName: item.lastName,
+          },
+        })
+      }
+    >
+      <View style={styles.cardWrapper}>
+        <View style={styles.card}>
+          <Text style={styles.memberName}>
+            {item.firstName} {item.lastName}
+          </Text>
 
-        <View style={styles.assignmentContainer}>
-          <Text style={styles.assignmentLabel}>Assigned:</Text>
-          <Text style={styles.assignmentText}>{item.assigned}</Text>
+          <View style={styles.assignmentContainer}>
+            <Text style={styles.assignmentLabel}>Assigned:</Text>
+            <Text style={styles.assignmentText}>{item.assigned}</Text>
+          </View>
         </View>
+        <View style={styles.divider} />
       </View>
-      <View style={styles.divider} />
-    </View>
+    </TouchableOpacity>
   );
 
   return (
@@ -85,6 +101,7 @@ export default function Members() {
           value={searchText}
           onChangeText={setSearchText}
           style={styles.searchInput}
+          cursorColor="#000"
         />
       </View>
 
