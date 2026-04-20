@@ -4,6 +4,9 @@
     "slug": "apidummy",
     "version": "1.0.0",
     "scheme": "apidummy",
-    "plugins": ["expo-router"]
+    "plugins": ["expo-router"],
+    "web": {
+      "output": "static"
+    }
   }
 }
