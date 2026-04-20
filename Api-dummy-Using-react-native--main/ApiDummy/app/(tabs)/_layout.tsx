@@ -3,7 +3,6 @@ import { Tabs, useRouter } from "expo-router";
 import { Image, Pressable } from "react-native";
 
 
-import { HapticTab } from "@/components/haptic-tab";
 import React from "react";
 
 
@@ -42,7 +41,6 @@ export default function TabLayout() {
 
 
        // Bottom tab styling
-       tabBarButton: HapticTab,
        tabBarActiveTintColor: "#F45B24", // makapo blue
        tabBarInactiveTintColor: "#000000ff", // black default
        tabBarStyle: {
