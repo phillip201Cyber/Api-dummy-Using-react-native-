@@ -2,7 +2,7 @@ name: Deploy Expo Web to Pages
 
 on:
   push:
-    branches: ["main","homepage"]
+    branches: ["main", "homepage"]
   workflow_dispatch:
 
 permissions:
@@ -21,6 +21,7 @@ jobs:
     defaults:
       run:
         working-directory: Api-dummy-Using-react-native--main/ApiDummy
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -30,7 +31,7 @@ jobs:
         with:
           node-version: 20
           cache: npm
-          cache-dependency-path: ApiDummy/package-lock.json
+          cache-dependency-path: Api-dummy-Using-react-native--main/ApiDummy/package-lock.json
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -44,7 +45,7 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ApiDummy/dist
+          path: Api-dummy-Using-react-native--main/ApiDummy/dist
 
   deploy:
     environment:
