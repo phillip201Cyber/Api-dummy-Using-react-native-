@@ -2,7 +2,7 @@ name: Deploy Expo Web to Pages
 
 on:
   push:
-    branches: ["homepage"]
+    branches: ["main","homepage"]
   workflow_dispatch:
 
 permissions:
