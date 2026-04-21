@@ -7,6 +7,9 @@
     "plugins": ["expo-router"],
     "web": {
       "output": "static"
+    },
+    "experiments": {
+      "baseUrl": "/Api-dummy-Using-react-native-"
     }
   }
 }
