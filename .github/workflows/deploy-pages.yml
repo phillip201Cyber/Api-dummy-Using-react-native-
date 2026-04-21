@@ -40,7 +40,10 @@ jobs:
         run: npm ci
 
       - name: Export web build
-        run: npx expo export --platform web
+        run: npx expo export --platform web --output-dir dist
+
+      - name: Show exported files
+        run: ls -R
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
